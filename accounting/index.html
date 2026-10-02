@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>MIRROR Research Wing - Visitor Information</title>
+
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: #0c1a2b;
+            --blue: #26b7ff;
+            --blue-light: #8de1ff;
+            --text: #d8f3ff;
+            --muted: #8da1b3;
+            --border: #23435d;
+            --success: #63e6a5;
+            --success-bg: #0b2823;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, #102c47 0, #07111f 45%);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(7, 17, 31, 0.95);
+            padding: 18px 24px;
+        }
+
+        .header-inner {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .brand {
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: var(--blue-light);
+            font-size: 1.5rem;
+        }
+
+        .division {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
+
+        main {
+            width: min(700px, 90vw);
+            margin: 60px auto;
+        }
+
+        .panel {
+            padding: 35px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: 0 0 35px rgba(38, 183, 255, 0.08);
+        }
+
+        h1 {
+            color: var(--blue-light);
+            margin-top: 0;
+        }
+
+        h2 {
+            margin-top: 32px;
+            color: #b9ddf3;
+            font-size: 1.15rem;
+        }
+
+        .asset {
+            font-family: monospace;
+            color: var(--blue);
+            margin-bottom: 25px;
+        }
+
+        li {
+            margin: 12px 0;
+            line-height: 1.5;
+        }
+
+        .notice {
+            border-left: 3px solid var(--blue);
+            padding: 5px 0 5px 18px;
+            margin: 28px 0;
+            color: #bcd0de;
+        }
+
+        .flag-box {
+            margin-top: 35px;
+            padding: 25px;
+            background: var(--success-bg);
+            border: 1px solid var(--success);
+            text-align: center;
+        }
+
+        .flag-box h2 {
+            color: var(--success);
+            margin-top: 0;
+        }
+
+        .flag {
+            display: inline-block;
+            margin: 12px 0;
+            padding: 12px 18px;
+            background: #061b17;
+            border: 1px dashed var(--success);
+            font-family: monospace;
+            font-size: 1.05rem;
+            color: #baffda;
+        }
+
+        .why {
+            margin-top: 35px;
+            padding-top: 25px;
+            border-top: 1px solid var(--border);
+        }
+
+        footer {
+            text-align: center;
+            color: #607586;
+            font-size: 0.75rem;
+            margin: 50px 20px 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="header-inner">
+        <div class="brand">MIRROR</div>
+        <div class="division">AI Research Systems</div>
+    </div>
+</header>
+
+<main>
+
+    <div class="panel">
+
+        <h1>Research Wing B</h1>
+
+        <div class="asset">
+            MIRROR-AI-01 / Visitor Information
+        </div>
+
+        <p>
+            Welcome to Research Wing B.
+        </p>
+
+        <p>
+            Please review the following requirements before
+            entering the MIRROR research area.
+        </p>
+
+
+        <h2>Facility Safety</h2>
+
+        <ul>
+            <li>
+                Visitors must remain with their authorized escort
+                while inside restricted areas.
+            </li>
+
+            <li>
+                Photography and video recording are prohibited
+                inside designated research areas.
+            </li>
+
+            <li>
+                Do not connect personal devices to facility
+                equipment or networks.
+            </li>
+
+            <li>
+                Follow posted emergency evacuation procedures.
+            </li>
+
+            <li>
+                Report unattended devices, suspicious QR labels,
+                or unusual activity to Security.
+            </li>
+        </ul>
+
+
+        <div class="notice">
+            <strong>No authentication is required.</strong>
+            Public visitor and safety information should never
+            require your corporate password, MFA code, payment
+            information, or installation of software.
+        </div>
+
+
+        <div class="flag-box">
+
+            <h2>Cybersecurity Awareness Challenge</h2>
+
+            <p>
+                You identified the legitimate facility QR code.
+            </p>
+
+            <p>Your challenge flag is:</p>
+
+            <div class="flag">
+                FLAG{THINK_BEFORE_YOU_SCAN}
+            </div>
+
+        </div>
+
+
+        <div class="why">
+
+            <h2>Why was this the legitimate QR code?</h2>
+
+            <p>
+                The destination matched the purpose advertised
+                by the physical QR code and provided the expected
+                information without requesting unnecessary access.
+            </p>
+
+            <p>
+                It did not request:
+            </p>
+
+            <ul>
+                <li>Your username or password</li>
+                <li>An MFA or authentication code</li>
+                <li>Device permissions</li>
+                <li>A software or application download</li>
+                <li>Payment or personal information</li>
+            </ul>
+
+            <p>
+                <strong>
+                    Remember: a QR code is just another way of
+                    presenting a link.
+                </strong>
+                Treat unexpected QR codes the same way you would
+                treat an unexpected link in an email or text message.
+            </p>
+
+        </div>
+
+    </div>
+
+</main>
+
+
+<footer>
+    MIRROR Systems Division • Research Wing B
+</footer>
+
+</body>
+</html>
