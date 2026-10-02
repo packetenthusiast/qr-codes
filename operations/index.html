@@ -1,123 +1,305 @@
 <!DOCTYPE html>
-<!-- Declares the document type as HTML5 -->
-
 <html lang="en">
-<!-- Root element of the HTML document, with English as the language -->
-
 <head>
-  <!-- Metadata section of the document, not displayed directly on the page -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <meta charset="UTF-8" />
-  <!-- Sets the character encoding to UTF-8, supporting most characters/symbols -->
+    <title>MIRROR Documentation Portal</title>
 
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <!-- Makes the page responsive by setting the viewport width to the device width -->
+    <style>
+        :root {
+            --bg: #07111f;
+            --panel: #0c1a2b;
+            --panel-light: #10243a;
+            --blue: #26b7ff;
+            --blue-light: #8de1ff;
+            --text: #d8f3ff;
+            --muted: #8da1b3;
+            --danger: #ff5c67;
+            --warning-bg: #2a1519;
+            --border: #23435d;
+        }
 
-  <title>Scanning...</title>
-  <!-- The title shown in the browser tab -->
+        * {
+            box-sizing: border-box;
+        }
 
-  <style>
-    /* Embedded CSS for styling the HTML content */
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background:
+                radial-gradient(circle at top, #102c47 0, #07111f 45%);
+            color: var(--text);
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-    body {
-      margin: 0; /* Removes default spacing around the body */
-      font-family: monospace; /* Uses a monospace font for a terminal-like look */
-      background-color: black; /* Sets the background to black */
-      color: limegreen; /* Sets the default text color to lime green */
-      display: flex; /* Enables flexbox layout */
-      flex-direction: column; /* Stacks children vertically */
-      align-items: center; /* Centers children horizontally */
-      justify-content: center; /* Centers children vertically */
-      height: 100vh; /* Makes the body fill the full viewport height */
-      text-align: center; /* Centers text */
-    }
+        header {
+            border-bottom: 1px solid var(--border);
+            background: rgba(7, 17, 31, 0.95);
+            padding: 18px 24px;
+        }
 
-    #message {
-      font-size: 1.5em; /* Increases text size for message */
-      white-space: pre-wrap; /* Preserves whitespace and line breaks */
-      padding: 20px; /* Adds padding around the message */
-    }
+        .header-inner {
+            max-width: 900px;
+            margin: auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
 
-    .hidden {
-      display: none; /* Hides any element with this class */
-    }
+        .brand {
+            font-weight: bold;
+            letter-spacing: 5px;
+            color: var(--blue-light);
+            font-size: 1.5rem;
+        }
 
-    .alert {
-      background-color: red; /* Red background for alert message */
-      color: white; /* White text */
-      font-weight: bold; /* Bold text */
-      padding: 30px; /* Adds padding */
-      font-size: 2em; /* Makes text large */
-    }
+        .division {
+            color: var(--muted);
+            font-size: 0.85rem;
+        }
 
-    .final {
-      background-color: white; /* White background for final message */
-      color: black; /* Black text */
-      padding: 30px; /* Adds padding */
-      font-size: 1.2em; /* Moderately large text */
-    }
-  </style>
+        main {
+            width: min(520px, 90vw);
+            margin: 70px auto;
+        }
+
+        .panel {
+            padding: 34px;
+            background: var(--panel);
+            border: 1px solid var(--border);
+            box-shadow: 0 0 35px rgba(38, 183, 255, 0.08);
+        }
+
+        h1 {
+            margin-top: 0;
+            color: var(--blue-light);
+            font-size: 1.6rem;
+        }
+
+        .document {
+            font-family: monospace;
+            color: var(--blue);
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin: 18px 0 7px;
+            font-size: 0.9rem;
+            color: #bcd0de;
+        }
+
+        input {
+            width: 100%;
+            padding: 13px;
+            background: #07111f;
+            color: white;
+            border: 1px solid #35536b;
+            font-size: 1rem;
+        }
+
+        input:focus {
+            outline: 1px solid var(--blue);
+            border-color: var(--blue);
+        }
+
+        button {
+            width: 100%;
+            margin-top: 25px;
+            padding: 14px;
+            border: 0;
+            background: var(--blue);
+            color: #04111d;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: var(--blue-light);
+        }
+
+        .identity {
+            text-align: center;
+            color: var(--muted);
+            font-size: 0.8rem;
+            margin-top: 22px;
+        }
+
+        .warning {
+            display: none;
+            background: var(--warning-bg);
+            border: 1px solid var(--danger);
+            padding: 25px;
+        }
+
+        .warning h2 {
+            color: var(--danger);
+            margin-top: 0;
+        }
+
+        .warning strong {
+            color: white;
+        }
+
+        .lesson {
+            border-left: 3px solid var(--blue);
+            padding-left: 15px;
+            margin-top: 25px;
+            color: #bcd0de;
+        }
+
+        footer {
+            text-align: center;
+            color: #607586;
+            font-size: 0.75rem;
+            margin: 50px 20px 20px;
+        }
+    </style>
 </head>
 
 <body>
-  <!-- The visible part of the webpage -->
 
-  <div id="message">Accessing Contacts...</div>
-  <!-- This div is the main placeholder for displaying text or HTML content dynamically.
-       It starts by showing "Accessing Contacts...", and its content changes as the script runs. -->
+<header>
+    <div class="header-inner">
+        <div class="brand">MIRROR</div>
+        <div class="division">AI Research Systems</div>
+    </div>
+</header>
 
-  <script>
-    // JavaScript to control the staged simulation messages
+<main>
 
-    const stages = [
-      // An array of "stages" that will be shown one after the other, each with text or HTML content and a delay
+    <div class="panel" id="login-panel">
 
-      {
-        // First stage: Simulates accessing and uploading contact information
-        text: 'Accessing Contacts...\n\nMom\nUncle Frank\nAunt Karen\nBoss\n+1 (833) 794-3556\nUploading to remote server...\nSending last photo taken to all contacts via MMS',
-        delay: 7500 // Wait 7.5 seconds before moving to the next stage
-      },
-      {
-        // Second stage: Simulates encrypting the phone and locking it
-        text: 'Encrypting device...\n\n[▓▓▓▓▓▓▓▓▓▓] 100%\nPhone locked.',
-        delay: 5000 // Wait 5 seconds before moving to the next stage
-      },
-      {
-        // Third stage: Fake ransomware message using styled HTML
-        html: '<div class="alert">Your phone is locked.\n<br>Send $1499 in Bitcoin to unlock or we will send all of your photos to your entire contact list</div>',
-        delay: 10000 // Wait 10 seconds before showing the final message
-      },
-      {
-        // Final stage: Reveals that it was a simulation with a humorous message
-        html: '<div class="final">🎯 <strong>This was a cybersecurity simulation.</strong><br><br>🚫 Don\'t scan random QR codes.<br><br><em>Brought to you by a rock being controlled by lightning</em></div>'
-        // No delay needed after this one; it’s the last message
-      }
-    ];
+        <h1>Documentation Portal</h1>
 
-    let i = 0; // Counter to keep track of which stage is currently running
-    const messageDiv = document.getElementById('message'); // Get a reference to the message display area
+        <div class="document">
+            MIRROR-AI-01 / Restricted Documentation
+        </div>
 
-    function runStage() {
-      const stage = stages[i]; // Get the current stage
+        <p>
+            This resource is restricted to authorized personnel.
+            Authenticate with your corporate account to continue.
+        </p>
 
-      if (stage.text) {
-        // If the stage contains plain text, display it as text
-        messageDiv.innerText = stage.text;
-      } else if (stage.html) {
-        // If the stage contains HTML content, insert it as HTML
-        messageDiv.innerHTML = stage.html;
-      }
+        <form id="login-form">
 
-      i++; // Move to the next stage
+            <label for="email">Corporate Email</label>
+            <input
+                id="email"
+                type="email"
+                autocomplete="off"
+                placeholder="firstname.lastname@company.com"
+                required
+            >
 
-      if (i < stages.length) {
-        // If there are more stages left, schedule the next one after the specified delay
-        setTimeout(runStage, stage.delay || 3000);
-        // If no delay is provided, default to 3 seconds
-      }
-    }
+            <label for="password">Password</label>
+            <input
+                id="password"
+                type="password"
+                autocomplete="off"
+                placeholder="Corporate password"
+                required
+            >
 
-    runStage(); // Start the first stage when the page loads
-  </script>
+            <button type="submit">
+                Sign In
+            </button>
+
+        </form>
+
+        <div class="identity">
+            Protected by Enterprise Identity Services
+        </div>
+
+    </div>
+
+
+    <div class="panel warning" id="warning-panel">
+
+        <h2>⚠ PHISHING SIMULATION</h2>
+
+        <p>
+            You just attempted to enter corporate credentials
+            into a website reached through an unverified QR code.
+        </p>
+
+        <p>
+            <strong>
+                Nothing you entered was transmitted, stored,
+                recorded, or sent anywhere.
+            </strong>
+        </p>
+
+        <div class="lesson">
+
+            <p>
+                A professional-looking website does not establish
+                that a website is legitimate.
+            </p>
+
+            <p>
+                QR codes can hide the destination of a link and
+                may direct users to convincing credential-harvesting
+                websites.
+            </p>
+
+            <p>
+                Before entering credentials, verify the destination
+                and consider whether the request makes sense.
+            </p>
+
+        </div>
+
+        <p>
+            <strong>
+                If an unexpected QR code asks for your corporate
+                password, stop and verify it.
+            </strong>
+        </p>
+
+    </div>
+
+</main>
+
+<footer>
+    MIRROR Systems Division • Facility Documentation Services
+</footer>
+
+
+<script>
+    /*
+     * TRAINING SIMULATION
+     *
+     * This form intentionally has:
+     *
+     *   - no action
+     *   - no network request
+     *   - no storage
+     *   - no logging
+     *
+     * The entered values are immediately discarded.
+     */
+
+    document
+        .getElementById("login-form")
+        .addEventListener("submit", function(event) {
+
+            event.preventDefault();
+
+            // Explicitly erase entered values.
+            document.getElementById("email").value = "";
+            document.getElementById("password").value = "";
+
+            // Remove the fake login interface.
+            document.getElementById("login-panel").style.display = "none";
+
+            // Reveal the awareness-training message.
+            document.getElementById("warning-panel").style.display = "block";
+
+        });
+</script>
+
 </body>
 </html>
