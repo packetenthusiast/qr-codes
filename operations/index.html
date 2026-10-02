@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<!-- Declares the document type as HTML5 -->
+
+<html lang="en">
+<!-- Root element of the HTML document, with English as the language -->
+
+<head>
+  <!-- Metadata section of the document, not displayed directly on the page -->
+
+  <meta charset="UTF-8" />
+  <!-- Sets the character encoding to UTF-8, supporting most characters/symbols -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Makes the page responsive by setting the viewport width to the device width -->
+
+  <title>Scanning...</title>
+  <!-- The title shown in the browser tab -->
+
+  <style>
+    /* Embedded CSS for styling the HTML content */
+
+    body {
+      margin: 0; /* Removes default spacing around the body */
+      font-family: monospace; /* Uses a monospace font for a terminal-like look */
+      background-color: black; /* Sets the background to black */
+      color: limegreen; /* Sets the default text color to lime green */
+      display: flex; /* Enables flexbox layout */
+      flex-direction: column; /* Stacks children vertically */
+      align-items: center; /* Centers children horizontally */
+      justify-content: center; /* Centers children vertically */
+      height: 100vh; /* Makes the body fill the full viewport height */
+      text-align: center; /* Centers text */
+    }
+
+    #message {
+      font-size: 1.5em; /* Increases text size for message */
+      white-space: pre-wrap; /* Preserves whitespace and line breaks */
+      padding: 20px; /* Adds padding around the message */
+    }
+
+    .hidden {
+      display: none; /* Hides any element with this class */
+    }
+
+    .alert {
+      background-color: red; /* Red background for alert message */
+      color: white; /* White text */
+      font-weight: bold; /* Bold text */
+      padding: 30px; /* Adds padding */
+      font-size: 2em; /* Makes text large */
+    }
+
+    .final {
+      background-color: white; /* White background for final message */
+      color: black; /* Black text */
+      padding: 30px; /* Adds padding */
+      font-size: 1.2em; /* Moderately large text */
+    }
+  </style>
+</head>
+
+<body>
+  <!-- The visible part of the webpage -->
+
+  <div id="message">Accessing Contacts...</div>
+  <!-- This div is the main placeholder for displaying text or HTML content dynamically.
+       It starts by showing "Accessing Contacts...", and its content changes as the script runs. -->
+
+  <script>
+    // JavaScript to control the staged simulation messages
+
+    const stages = [
+      // An array of "stages" that will be shown one after the other, each with text or HTML content and a delay
+
+      {
+        // First stage: Simulates accessing and uploading contact information
+        text: 'Accessing Contacts...\n\nMom\nUncle Frank\nAunt Karen\nBoss\n+1 (833) 794-3556\nUploading to remote server...\nSending last photo taken to all contacts via MMS',
+        delay: 7500 // Wait 7.5 seconds before moving to the next stage
+      },
+      {
+        // Second stage: Simulates encrypting the phone and locking it
+        text: 'Encrypting device...\n\n[▓▓▓▓▓▓▓▓▓▓] 100%\nPhone locked.',
+        delay: 5000 // Wait 5 seconds before moving to the next stage
+      },
+      {
+        // Third stage: Fake ransomware message using styled HTML
+        html: '<div class="alert">Your phone is locked.\n<br>Send $1499 in Bitcoin to unlock or we will send all of your photos to your entire contact list</div>',
+        delay: 10000 // Wait 10 seconds before showing the final message
+      },
+      {
+        // Final stage: Reveals that it was a simulation with a humorous message
+        html: '<div class="final">🎯 <strong>This was a cybersecurity simulation.</strong><br><br>🚫 Don\'t scan random QR codes.<br><br><em>Brought to you by a rock being controlled by lightning</em></div>'
+        // No delay needed after this one; it’s the last message
+      }
+    ];
+
+    let i = 0; // Counter to keep track of which stage is currently running
+    const messageDiv = document.getElementById('message'); // Get a reference to the message display area
+
+    function runStage() {
+      const stage = stages[i]; // Get the current stage
+
+      if (stage.text) {
+        // If the stage contains plain text, display it as text
+        messageDiv.innerText = stage.text;
+      } else if (stage.html) {
+        // If the stage contains HTML content, insert it as HTML
+        messageDiv.innerHTML = stage.html;
+      }
+
+      i++; // Move to the next stage
+
+      if (i < stages.length) {
+        // If there are more stages left, schedule the next one after the specified delay
+        setTimeout(runStage, stage.delay || 3000);
+        // If no delay is provided, default to 3 seconds
+      }
+    }
+
+    runStage(); // Start the first stage when the page loads
+  </script>
+</body>
+</html>
